@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FraudGuard | Bank Fraud Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <a href="#" class="brand">
+            <div class="brand-icon">F<span>G</span></div>
+            <div>
+                <h2>FraudGuard</h2>
+                <small>TRANSACTION SECURITY</small>
+            </div>
+        </a>
+
+        <div class="menu-label">WORKSPACE</div>
+
+        <nav class="navigation">
+            <a href="#dashboard" class="nav-link active">
+                <span class="nav-icon">▦</span> Dashboard
+            </a>
+            <a href="#analyzer" class="nav-link">
+                <span class="nav-icon">↗</span> Analyze Transaction
+            </a>
+            <a href="#history" class="nav-link">
+                <span class="nav-icon">▤</span> Transaction History
+            </a>
+            <a href="#rules" class="nav-link">
+                <span class="nav-icon">◈</span> Detection Rules
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="security-symbol">✳</div>
+            <h3>Security first.</h3>
+            <p>Every transaction tells a story. Detect suspicious activity before it becomes a threat.</p>
+            <div class="sidebar-line"></div>
+            <small>RDBMS PROJECT</small>
+            <p class="tech-label">Java · Spring Boot · MySQL</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="dashboard">
+
+        <header class="topbar">
+            <div>
+                <div class="breadcrumb">Workspace <span>/</span> Dashboard</div>
+                <h1>Fraud Detection <span>Dashboard </span></h1>
+                <h1> <span>Code Vision </span></h1>
+            </div>
+            <div class="system-status">
+                <span class="status-dot"></span>
+                <span>Monitoring Interface</span>
+            </div>
+        </header>
+
+        <section class="welcome-banner">
+            <div>
+                <div class="eyebrow"><span class="red-dot"></span> TRANSACTION INTELLIGENCE</div>
+                <h2>Stay one step ahead<br>of <span>financial fraud.</span></h2>
+                <p>Analyze transactions, identify unusual patterns, and review risk decisions from one place.</p>
+                <a href="#analyzer" class="banner-button">Analyze a transaction <span>↗</span></a>
+            </div>
+            <div class="banner-art" aria-hidden="true">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="shield">
+                    <span>✓</span>
+                </div>
+                <div class="floating-card card-one">
+                    <span class="mini-dot"></span> Secure analysis
+                </div>
+                <div class="floating-card card-two">
+                    <span>↗</span> Risk monitoring
+                </div>
+                <div class="art-caption">TRUST EVERY CHECK.</div>
+            </div>
+        </section>
+
+        <!-- Summary Cards -->
+        <section class="stats-grid">
+            <article class="stat-card">
+                <div class="stat-top">
+                    <span>Total analyzed</span>
+                    <span class="stat-icon">▤</span>
+                </div>
+                <h3 id="totalCount">0</h3>
+                <p>Transactions checked in this session</p>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-top">
+                    <span>Allowed</span>
+                    <span class="stat-icon green-icon">✓</span>
+                </div>
+                <h3 id="allowedCount">0</h3>
+                <p>Low-risk transactions</p>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-top">
+                    <span>Needs review</span>
+                    <span class="stat-icon yellow-icon">◷</span>
+                </div>
+                <h3 id="reviewCount">0</h3>
+                <p>Transactions requiring attention</p>
+            </article>
+
+            <article class="stat-card danger-stat">
+                <div class="stat-top">
+                    <span>Blocked</span>
+                    <span class="stat-icon red-icon">!</span>
+                </div>
+                <h3 id="blockedCount">0</h3>
+                <p>High-risk transactions</p>
+            </article>
+        </section>
+
+        <div class="content-grid">
+
+            <!-- Transaction Form -->
+            <section class="panel transaction-panel" id="analyzer">
+                <div class="panel-heading">
+                    <div>
+                        <div class="section-kicker">NEW ANALYSIS</div>
+                        <h2>Analyze transaction</h2>
+                        <p>Enter transaction details to evaluate its risk.</p>
+                    </div>
+                    <div class="heading-icon">↗</div>
+                </div>
+
+                <form id="transactionForm">
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="transaction_id">Transaction ID <span>*</span></label>
+                            <input type="text" id="transaction_id" name="transaction_id"
+                                   placeholder="e.g. TXN1001" required>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="user_id">Select User</label>
+
+                            <select id="user_id" name="user_id" required>
+                                <option value="">Loading users...</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">Transaction amount (₹) <span>*</span></label>
+                            <div class="input-with-symbol">
+                                <span>₹</span>
+                                <input type="number" id="amount" name="amount"
+                                       placeholder="5000.00" min="0.01" step="0.01" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="merchant">Merchant</label>
+                            <input type="text" id="merchant" name="merchant"
+                                   placeholder="e.g. Amazon">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Transaction location</label>
+                            <input type="text" id="location" name="location"
+                                   placeholder="e.g. Ludhiana">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="device_id">Device ID</label>
+                            <input type="text" id="device_id" name="device_id"
+                                   placeholder="e.g. DEVICE101">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="transaction_type">Transaction type <span>*</span></label>
+                            <select id="transaction_type" name="transaction_type" required>
+                                <option value="Withdrawal">Withdrawal</option>
+                                <option value="Online Payment">Online Payment</option>
+                                <option value="Transfer">Transfer</option>
+                                <option value="Deposit">Deposit</option>
+                                <option value="Card Payment">Card Payment</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-note">
+                        <span>ⓘ</span>
+                        Transactions are evaluated using the fraud rules configured in your backend.
+                    </div>
+
+                    <button type="submit" class="submit-button" id="submitButton">
+                        <span class="button-shield">✓</span>
+                        <span id="buttonText">Analyze transaction</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+                </form>
+
+                <div id="errorMessage" class="message error-message" role="alert" hidden></div>
+            </section>
+
+            <!-- Result Panel -->
+            <section class="panel result-panel">
+                <div class="panel-heading">
+                    <div>
+                        <div class="section-kicker">ANALYSIS OUTPUT</div>
+                        <h2>Risk assessment</h2>
+                        <p>Latest transaction decision</p>
+                    </div>
+                    <div class="heading-icon result-heading-icon">◎</div>
+                </div>
+
+                <div id="emptyResult" class="empty-result">
+                    <div class="empty-illustration">
+                        <div class="empty-ring"></div>
+                        <span>✓</span>
+                    </div>
+                    <h3>Ready for analysis</h3>
+                    <p>Submit a transaction to see its risk level, score, and decision here.</p>
+                    <div class="empty-tag"><span></span> WAITING FOR TRANSACTION</div>
+                </div>
+
+                <div id="resultContent" hidden>
+                    <div id="resultBadge" class="result-badge">
+                        <span id="resultSymbol">✓</span>
+                        <span id="resultDecision">ALLOWED</span>
+                    </div>
+
+                    <div class="score-block">
+                        <div class="score-label">
+                            <span>Risk score</span>
+                            <strong id="riskScore">0/100</strong>
+                        </div>
+                        <div class="score-track">
+                            <div id="scoreFill" class="score-fill"></div>
+                        </div>
+                        <div class="score-scale">
+                            <span>LOW</span><span>MEDIUM</span><span>HIGH</span>
+                        </div>
+                    </div>
+
+                    <div class="result-details">
+                        <div>
+                            <span>Transaction ID</span>
+                            <strong id="resultTransactionId">—</strong>
+                        </div>
+                        <div>
+                            <span>Risk level</span>
+                            <strong id="resultRiskLevel">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="result-explanation">
+                        <span class="explanation-icon">✳</span>
+                        <div>
+                            <strong>Detection summary</strong>
+                            <p id="resultReason">Analysis completed.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Detection Rules -->
+        <section class="panel rules-panel" id="rules">
+            <div class="panel-heading rules-heading">
+                <div>
+                    <div class="section-kicker">HOW IT WORKS</div>
+                    <h2>Fraud detection rules</h2>
+                    <p>Illustrative scoring rules used by the project.</p>
+                </div>
+                <span class="rules-label">RULE-BASED ENGINE</span>
+            </div>
+
+            <div class="rules-grid">
+                <article class="rule-card">
+                    <div class="rule-symbol">₹</div>
+                    <div class="rule-info">
+                        <h3>Unusual amount</h3>
+                        <p>Transaction exceeds the user's configured normal limit.</p>
+                    </div>
+                    <span class="rule-points">+50</span>
+                </article>
+
+                <article class="rule-card">
+                    <div class="rule-symbol">◷</div>
+                    <div class="rule-info">
+                        <h3>Frequent transactions</h3>
+                        <p>Three or more transactions within ten minutes.</p>
+                    </div>
+                    <span class="rule-points">+30</span>
+                </article>
+
+                <article class="rule-card">
+                    <div class="rule-symbol">⌑</div>
+                    <div class="rule-info">
+                        <h3>Unfamiliar device</h3>
+                        <p>Transaction uses a device not recognized for the user.</p>
+                    </div>
+                    <span class="rule-points">+20</span>
+                </article>
+            </div>
+
+            <div class="risk-legend">
+                <div class="legend-item">
+                    <span class="legend-dot low"></span>
+                    <div><strong>0–29</strong><small>LOW · ALLOWED</small></div>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot medium"></span>
+                    <div><strong>30–69</strong><small>MEDIUM · REVIEW</small></div>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot high"></span>
+                    <div><strong>70–100</strong><small>HIGH · BLOCKED</small></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transaction History -->
+        <section class="panel history-panel" id="history">
+            <div class="panel-heading history-heading">
+                <div>
+                    <div class="section-kicker">RECENT ACTIVITY</div>
+                    <h2>Transaction history</h2>
+                    <p>Transactions analyzed during this browser session.</p>
+                </div>
+                <button type="button" class="clear-button" id="clearHistory">Clear history</button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>TRANSACTION ID</th>
+                        <th>USER ID</th>
+                        <th>AMOUNT</th>
+                        <th>RISK LEVEL</th>
+                        <th>DECISION</th>
+                    </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                    <tr>
+                        <td colspan="5" class="no-history">No transactions analyzed yet.</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <span><span class="footer-mark">CV</span> Code Vision </span>
+            <span>Aniket <b>·</b> Ankush <b>·</b> Manjeet</span>
+        </footer>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
